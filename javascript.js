@@ -35,32 +35,30 @@ ELSE IF the computer selects paper, return: "You win! Scissors beats paper."
 ELSE return: "It's a tie!"
 */
 
-const playerSelection = prompt("Rock, paper, or scissors?").toLowercase;
-const computerSelection = computerPlay();
+let playerSelection = prompt("Rock, paper, or scissors?").toLowerCase();
+let computerSelection = computerPlay().toLowerCase();
 
 function playRound (playerSelection, computerSelection) {
     
-    if (playerSelection === "rock" && computerSelection === "Paper") {
+    if (playerSelection === "rock" && computerSelection === "paper") {
         return "You lose! Paper beats rock.";
-    } else if (playerSelection === "rock" && computerSelection === "Scissors") {
+    } else if (playerSelection === "rock" && computerSelection === "scissors") {
         return "You win! Rock beats scissors.";
-    } else {
-        return "It's a tie!";
-    }
+    } 
 
-    if (playerSelection === "paper" && computerSelection === "Scissors") {
+    if (playerSelection === "paper" && computerSelection === "scissors") {
         return "You lose! Scissors beats paper.";
-    } else if (playerSelection === "paper" && computerSelection === "Rock") {
+    } else if (playerSelection === "paper" && computerSelection === "rock") {
         return "You win! Paper beats rock.";
-    } else {
-        return "It's a tie!";
-    }
+    } 
 
-    if (playerSelection === "scissors" && computerSelection === "Rock") {
+    if (playerSelection === "scissors" && computerSelection === "rock") {
         return "You lose! Rock beats scissors.";
-    } else if (playerSelection === "scissors" && computerSelection === "Paper") {
+    } else if (playerSelection === "scissors" && computerSelection === "paper") {
         return "You win! Scissors beats paper.";
-    } else {
+    } 
+
+    if (playerSelection === computerSelection) {
         return "It's a tie!";
     }
 }
