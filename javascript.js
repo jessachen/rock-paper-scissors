@@ -35,9 +35,6 @@ ELSE IF the computer selects paper, return: "You win! Scissors beats paper."
 ELSE return: "It's a tie!"
 */
 
-let playerSelection = prompt("Rock, paper, or scissors?").toLowerCase();
-let computerSelection = computerPlay().toLowerCase();
-
 function playRound (playerSelection, computerSelection) {
     
     if (playerSelection === "rock" && computerSelection === "paper") {
@@ -63,4 +60,53 @@ function playRound (playerSelection, computerSelection) {
     }
 }
 
-console.log(playRound(playerSelection, computerSelection));
+/* 
+Loop from 0 to 5 
+Prompt the user for input
+Have the computer make a selection
+Play a round
+If the computer wins, add one to its score
+If the player wins, add one to their score.
+At the end of each round, print the score. */
+
+function game() {
+    let playerScore = 0;
+    let computerScore = 0;
+
+    for (let i = 0; i < 5; i++) {
+        let playerSelection = prompt("Rock, paper, or scissors?").toLowerCase();
+        let computerSelection = computerPlay().toLowerCase();
+
+        console.log(playRound(playerSelection, computerSelection));
+
+        if (playerSelection === "rock" && computerSelection === "paper") {
+            computerScore += 1;
+        } else if (playerSelection === "rock" && computerSelection === "scissors") {
+            playerScore += 1;
+        } 
+    
+        if (playerSelection === "paper" && computerSelection === "scissors") {
+            computerScore += 1;
+        } else if (playerSelection === "paper" && computerSelection === "rock") {
+            playerScore += 1;
+        } 
+    
+        if (playerSelection === "scissors" && computerSelection === "rock") {
+            computerScore += 1;
+        } else if (playerSelection === "scissors" && computerSelection === "paper") {
+            playerScore += 1;
+        } 
+
+        console.log( `Player: ${playerScore}, Computer: ${computerScore}`)
+    }
+
+    if (playerScore > computerScore) {
+        console.log("You beat the computer! Nice work.")
+    } else if (computerScore > playerScore) {
+        console.log("You lost to the computer. Try again!")
+    } else if (playerScore = computerScore) {
+        console.log("You tied with the computer... So close.")
+    }
+}
+
+game();
