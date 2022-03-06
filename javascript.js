@@ -65,15 +65,21 @@ If the player wins, add one to their score
 At the end of each round, print the score 
 After 5 rounds, print the game outcome: win, lose, or tie */
 
+function clicked(e) {
+    let playerSelection = this.id;
+    let computerSelection = computerPlay().toLowerCase();
+    console.log(playRound(playerSelection, computerSelection));
+}
+const buttons = document.querySelectorAll('button');
+        buttons.forEach(button => button.addEventListener('click', clicked))
+
 function game() {
     let playerScore = 0;
     let computerScore = 0;
 
-    for (let i = 0; i < 5; i++) {
-        let playerSelection = prompt("Rock, paper, or scissors?").toLowerCase();
-        let computerSelection = computerPlay().toLowerCase();
-
-        console.log(playRound(playerSelection, computerSelection));
+    for (; ;/* let i = 0; i < 5; i++ */) {
+        /* let playerSelection = prompt("Rock, paper, or scissors?").toLowerCase(); */
+        /*let computerSelection = computerPlay().toLowerCase();*/
 
         if (playerSelection === "rock" && computerSelection === "paper") {
             computerScore += 1;
@@ -104,5 +110,3 @@ function game() {
         console.log("You tied with the computer... So close.")
     }
 }
-
-game();
