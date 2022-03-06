@@ -30,30 +30,43 @@ IF the player selects scissors and the computer selects rock, return: "You lose!
 ELSE IF the computer selects paper, return: "You win! Scissors beats paper."
 ELSE return: "It's a tie!" */
 
+const results = document.querySelector("#results");
+const p1 = document.createElement('p');
+
 function playRound (playerSelection, computerSelection) {
     
     if (playerSelection === "rock" && computerSelection === "paper") {
-        return "You lose! Paper beats rock.";
+        p1.textContent = "You lose! Paper beats rock.";
     } else if (playerSelection === "rock" && computerSelection === "scissors") {
-        return "You win! Rock beats scissors.";
+        p1.textContent = "You win! Rock beats scissors.";
     } 
 
     if (playerSelection === "paper" && computerSelection === "scissors") {
-        return "You lose! Scissors beats paper.";
+        p1.textContent = "You lose! Scissors beats paper.";
     } else if (playerSelection === "paper" && computerSelection === "rock") {
-        return "You win! Paper beats rock.";
+        p1.textContent = "You win! Paper beats rock.";
     } 
 
     if (playerSelection === "scissors" && computerSelection === "rock") {
-        return "You lose! Rock beats scissors.";
+        p1.textContent = "You lose! Rock beats scissors.";
     } else if (playerSelection === "scissors" && computerSelection === "paper") {
-        return "You win! Scissors beats paper.";
+        p1.textContent = "You win! Scissors beats paper.";
     } 
 
     if (playerSelection === computerSelection) {
-        return "It's a tie!";
+        p1.textContent = "It's a tie!";
     }
+
+    results.appendChild(p1);
 }
+
+function clicked(e) {
+    let playerSelection = this.id;
+    let computerSelection = computerPlay().toLowerCase();
+    console.log(playRound(playerSelection, computerSelection));
+}
+const buttons = document.querySelectorAll('button');
+        buttons.forEach(button => button.addEventListener('click', clicked))
 
 /* Initialize score variables for player and computer
 Loop from 0 to 5 
@@ -64,14 +77,6 @@ If the computer wins, add one to its score
 If the player wins, add one to their score
 At the end of each round, print the score 
 After 5 rounds, print the game outcome: win, lose, or tie */
-
-function clicked(e) {
-    let playerSelection = this.id;
-    let computerSelection = computerPlay().toLowerCase();
-    console.log(playRound(playerSelection, computerSelection));
-}
-const buttons = document.querySelectorAll('button');
-        buttons.forEach(button => button.addEventListener('click', clicked))
 
 function game() {
     let playerScore = 0;
