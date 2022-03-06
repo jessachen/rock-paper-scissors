@@ -1,13 +1,10 @@
-/* 
-PROBLEM: The computer doesn't know anything. So we need to make sure that it stores
+/* PROBLEM: The computer doesn't know anything. So we need to make sure that it stores
 'Rock', 'Paper', and 'Scissors' and that it can randomly select one of these choices
 in order to play the game. 
 
-The computer stores the strings 'Rock', 'Paper', and 'Scissors' in an array.
-Creat a function to randomly select one of these choices.
-The function contains a variable expression that generates a random number between 0 and 3, a range set
-based on the length of the array.
-The function uses this number as an index position to select and return the corresponding item in the array. */
+Store the strings 'Rock', 'Paper', and 'Scissors' in an array.
+Generate a random number between 0 and the length of the array.
+Use this number as an index position to select and return the corresponding item in the array. */
 
 let computerOption = ["Rock", "Paper", "Scissors"]; // The computer stores the strings 'Rock', 'Paper', and 'Scissors' in an array.//
 
@@ -16,8 +13,7 @@ function computerPlay () {
     return computerOption[random] //Use the results of the random expression as an index position to select and return the corresponding item in the array.//
 }
 
-/* 
-PROBLEM: The computer doesn't know how to play RPS. We need an algorithm that allows
+/* PROBLEM: The computer doesn't know how to play RPS. We need an algorithm that allows
 it to play. 
 
 The player inputs a selection of either Rock, Paper, or Scissors.
@@ -32,8 +28,7 @@ ELSE return: "It's a tie!"
 
 IF the player selects scissors and the computer selects rock, return: "You lose! Rock beats scissors."
 ELSE IF the computer selects paper, return: "You win! Scissors beats paper."
-ELSE return: "It's a tie!"
-*/
+ELSE return: "It's a tie!" */
 
 function playRound (playerSelection, computerSelection) {
     
@@ -60,14 +55,15 @@ function playRound (playerSelection, computerSelection) {
     }
 }
 
-/* 
+/* Initialize score variables for player and computer
 Loop from 0 to 5 
 Prompt the user for input
 Have the computer make a selection
 Play a round
 If the computer wins, add one to its score
-If the player wins, add one to their score.
-At the end of each round, print the score. */
+If the player wins, add one to their score
+At the end of each round, print the score 
+After 5 rounds, print the game outcome: win, lose, or tie */
 
 function game() {
     let playerScore = 0;
