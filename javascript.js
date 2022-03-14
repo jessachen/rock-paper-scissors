@@ -32,6 +32,8 @@ ELSE return: "It's a tie!" */
 
 const results = document.querySelector("#results");
 const p1 = document.createElement('p');
+const p2 = document.createElement('p');
+const p3 = document.createElement('p');
 
 function playRound (playerSelection, computerSelection) {
     
@@ -60,14 +62,6 @@ function playRound (playerSelection, computerSelection) {
     results.appendChild(p1);
 }
 
-function clicked(e) {
-    let playerSelection = this.id;
-    let computerSelection = computerPlay().toLowerCase();
-    console.log(playRound(playerSelection, computerSelection));
-}
-const buttons = document.querySelectorAll('button');
-        buttons.forEach(button => button.addEventListener('click', clicked))
-
 /* Initialize score variables for player and computer
 Loop from 0 to 5 
 Prompt the user for input
@@ -77,15 +71,12 @@ If the computer wins, add one to its score
 If the player wins, add one to their score
 At the end of each round, print the score 
 After 5 rounds, print the game outcome: win, lose, or tie */
+let playerScore = 0;
+let computerScore = 0;
 
-function game() {
-    let playerScore = 0;
-    let computerScore = 0;
-
-    for (; ;/* let i = 0; i < 5; i++ */) {
-        /* let playerSelection = prompt("Rock, paper, or scissors?").toLowerCase(); */
-        /*let computerSelection = computerPlay().toLowerCase();*/
-
+function game(playerSelection, computerSelection) {
+    
+    
         if (playerSelection === "rock" && computerSelection === "paper") {
             computerScore += 1;
         } else if (playerSelection === "rock" && computerSelection === "scissors") {
@@ -104,14 +95,28 @@ function game() {
             playerScore += 1;
         } 
 
-        console.log( `Player: ${playerScore}, Computer: ${computerScore}`)
-    }
+        p2.textContent = `Player: ${playerScore}, Computer: ${computerScore}`;
+        
+        results.appendChild(p2);
+        
+       /* if (playerScore == 5 || computerScore == 5) break; */
+    
 
-    if (playerScore > computerScore) {
-        console.log("You beat the computer! Nice work.")
-    } else if (computerScore > playerScore) {
-        console.log("You lost to the computer. Try again!")
-    } else if (playerScore = computerScore) {
-        console.log("You tied with the computer... So close.")
+    if (playerScore > computerScore && playerScore == 5) {
+        p3.textContent = "You beat the computer! Nice work."; 
+    } else if (computerScore > playerScore && computerScore == 5) {
+        p3.textContent = "You lost to the computer. Try again!";
     }
+    results.appendChild(p3);
+
 }
+
+function clicked(e) {
+    if (playerScore == 5 || computerScore == 5) return;
+    let playerSelection = this.id;
+    let computerSelection = computerPlay().toLowerCase();
+    playRound(playerSelection, computerSelection);
+    game(playerSelection, computerSelection);
+}
+const buttons = document.querySelectorAll('button');
+        buttons.forEach(button => button.addEventListener('click', clicked))
