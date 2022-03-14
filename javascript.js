@@ -30,7 +30,7 @@ IF the player selects scissors and the computer selects rock, return: "You lose!
 ELSE IF the computer selects paper, return: "You win! Scissors beats paper."
 ELSE return: "It's a tie!" */
 
-const results = document.querySelector("#results");
+const results = document.querySelector('#results');
 const p1 = document.createElement('p');
 const p2 = document.createElement('p');
 const p3 = document.createElement('p');
@@ -74,34 +74,34 @@ let computerScore = 0;
 
 function game(playerSelection, computerSelection) {
     
-    
-        if (playerSelection === "rock" && computerSelection === "paper") {
-            computerScore += 1;
-        } else if (playerSelection === "rock" && computerSelection === "scissors") {
-            playerScore += 1;
-        } 
-    
-        if (playerSelection === "paper" && computerSelection === "scissors") {
-            computerScore += 1;
-        } else if (playerSelection === "paper" && computerSelection === "rock") {
-            playerScore += 1;
-        } 
-    
-        if (playerSelection === "scissors" && computerSelection === "rock") {
-            computerScore += 1;
-        } else if (playerSelection === "scissors" && computerSelection === "paper") {
-            playerScore += 1;
-        } 
+    if (playerSelection === "rock" && computerSelection === "paper") {
+        computerScore += 1;
+    } else if (playerSelection === "rock" && computerSelection === "scissors") {
+        playerScore += 1;        
+    } 
 
-        p2.textContent = `Player: ${playerScore}, Computer: ${computerScore}`;
+    if (playerSelection === "paper" && computerSelection === "scissors") {
+        computerScore += 1;
+    } else if (playerSelection === "paper" && computerSelection === "rock") {
+        playerScore += 1;
+    } 
+    
+    if (playerSelection === "scissors" && computerSelection === "rock") {
+        computerScore += 1;
+    } else if (playerSelection === "scissors" && computerSelection === "paper") {
+        playerScore += 1;
+    } 
+
+    p2.textContent = `Player: ${playerScore}, Computer: ${computerScore}`;
         
-        results.appendChild(p2);
+    results.appendChild(p2);
 
     if (playerScore > computerScore && playerScore == 5) {
         p3.textContent = "You beat the computer! Nice work."; 
     } else if (computerScore > playerScore && computerScore == 5) {
         p3.textContent = "You lost to the computer. Try again!";
     }
+    
     results.appendChild(p3);
 }
 
@@ -112,5 +112,6 @@ function clicked(e) {
     playRound(playerSelection, computerSelection);
     game(playerSelection, computerSelection);
 }
+
 const buttons = document.querySelectorAll('button');
-        buttons.forEach(button => button.addEventListener('click', clicked))
+buttons.forEach(button => button.addEventListener('click', clicked));
