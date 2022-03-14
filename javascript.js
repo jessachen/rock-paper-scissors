@@ -63,14 +63,12 @@ function playRound (playerSelection, computerSelection) {
 }
 
 /* Initialize score variables for player and computer
-Loop from 0 to 5 
-Prompt the user for input
-Have the computer make a selection
-Play a round
 If the computer wins, add one to its score
 If the player wins, add one to their score
 At the end of each round, print the score 
-After 5 rounds, print the game outcome: win, lose, or tie */
+Once player or computer reaches 5 points, 
+print the game outcome: win or lose.*/
+
 let playerScore = 0;
 let computerScore = 0;
 
@@ -98,9 +96,6 @@ function game(playerSelection, computerSelection) {
         p2.textContent = `Player: ${playerScore}, Computer: ${computerScore}`;
         
         results.appendChild(p2);
-        
-       /* if (playerScore == 5 || computerScore == 5) break; */
-    
 
     if (playerScore > computerScore && playerScore == 5) {
         p3.textContent = "You beat the computer! Nice work."; 
@@ -108,7 +103,6 @@ function game(playerSelection, computerSelection) {
         p3.textContent = "You lost to the computer. Try again!";
     }
     results.appendChild(p3);
-
 }
 
 function clicked(e) {
